@@ -10,6 +10,7 @@ from utils.medical_analyzer import analyze_report
 from utils.medicine_analyzer import analyze_medicines
 from utils.health_score import calculate_health_score
 from utils.symptom_analyzer import analyze_symptoms
+from utils.reminder_system import generate_reminders
 
 # ---------------- PAGE CONFIG ---------------- #
 
@@ -41,6 +42,7 @@ st.sidebar.info(
     ✅ Symptom Detection
     ✅ Emergency Alerts
     ✅ Health Score Detection
+    ✅ Medicine Reminder System
     """
 )
 
@@ -146,6 +148,22 @@ if uploaded_file or camera_image:
     else:
 
         st.info("No medicines detected.")
+
+    # ---------------- MEDICINE REMINDER SYSTEM ---------------- #
+
+    st.subheader("⏰ Medicine Reminder System")
+
+    reminders = generate_reminders(extracted_text)
+
+    if reminders:
+
+        for reminder in reminders:
+
+            st.info(reminder)
+
+    else:
+
+        st.warning("No medicine timings detected.")
 
     # ---------------- SYMPTOM DETECTION ---------------- #
 
