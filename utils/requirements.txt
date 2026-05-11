@@ -1,5 +1,6 @@
 streamlit
-pdfplumber
+pdfplumber==0.11.4
+pdfminer.six==20231228
 pytesseract
 Pillow
 pandas
